@@ -2,16 +2,6 @@
 
 The onboarding exercises is a set of activities that reflects the internal project codebase, i.e. REITScreener.
 
-## GraphQL Stack
-
-This activity will give you an idea how GraphQL is setup using Apollo GraphQL
-
-* setup definitions
-* setup resolvers
-* setup type checker, using flowjs
-* setup models, using sequelize
-* setup tests, using avajs
-
 ## PostgreSQL Definitions
 
 This activity will give you an idea how triggers and stored procedures are used
@@ -20,6 +10,16 @@ This activity will give you an idea how triggers and stored procedures are used
 * setup enum definitions
 * setup stored procedures
 * setup triggers
+
+## GraphQL Stack
+
+This activity will give you an idea how GraphQL is setup using Apollo GraphQL
+
+* setup graphql definitions
+* setup resolvers
+* setup type checker, using flowjs
+* setup models, using sequelize
+* setup tests, using avajs
 
 ## Excel File Parsing
 

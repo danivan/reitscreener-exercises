@@ -8,7 +8,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 
 ## Schema
 
-* REIT table definition, a REIT is a is a company that owns, and in most cases operates, income-producing real estate.
+* REIT table definition, a REIT is a company that owns, and in most cases operates, income-producing real estate.
 
 |name | description |
 |---|---|
@@ -25,7 +25,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 | year | report year |
 | announcementDate | report announcement date |
 | auditedNAVPerUnit | calculated NAV per unit basis |
-| declaredDPU | |
+| declaredDPU | audited annual DPU |
 
 * REIT Share Price, daily stock market price
 
