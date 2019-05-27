@@ -1,0 +1,73 @@
+scalar Duration
+scalar DateTime
+
+enum REITExchange {
+  SGX
+  HKEX
+}
+
+enum REITSector {
+  HEALTHCARE
+  RESIDENTIAL
+  HOSPITALITY
+}
+
+enum ReportFrequency {
+  QUARTERLY
+  ANNUAL
+}
+
+type Reit {
+  reitId: ID!
+  name: String!
+  sector: ReitSector!
+  stockCode: String!
+  exchange: REITExchange!
+  priceCurrency: String!
+  financialCurrency: String!
+}
+
+type FinancialReport {
+  type: String!
+  announcementDate: DateTime
+  year: String!
+  link: String
+}
+
+type FinancialReports {
+  count: Int!
+  rows(offset: Float, limit: Float): [FinancialReport]!
+}
+
+type ChartDataPoint {
+  value: Float!
+  label: String!
+}
+
+type SharePriceChart {
+  minusSTDDEV: Float
+  minus2STDDEV: Float
+  plusSTDDEV: Float
+  plus2STDDEV: Float
+  average: Float
+  chart: [ChartDataPoint]!
+}
+
+type WatchlistItem {
+  reit: Reit!
+  price: Float!
+}
+
+type Query {
+  reit(stockCode: String, reitId: ID): Reit
+  reits(exchange: REITExchange!): [Reit]
+  financialReports(frequency: ReportFrequency!, stockCode: String!): FinancialReports!
+  sharePriceNAV(stockCode: String!, range: Duration!): SharePriceChart!
+  sharePriceYield(stockCode: String!, range: Duration!): SharePriceChart!
+  watchlist(exchange: REITExchange): [WatchlistItem]!
+}
+
+type Mutation {
+  addToWatchlist(stockCode: String!): Boolean!
+  removeFromWatchlist(stockCode: String!): Boolean!
+}
