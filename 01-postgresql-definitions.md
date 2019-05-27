@@ -8,7 +8,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 
 ## Schema
 
-* REIT table definition, a REIT is a company that owns, and in most cases operates, income-producing real estate.
+REIT table definition, a REIT is a company that owns, and in most cases operates, income-producing real estate.
 
 |name | description |
 |---|---|
@@ -16,7 +16,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 | name | REIT name |
 | stockCode | REIT stock code, given by the market exchange |
 
-* REIT annual report table definition, this is the REIT's annual performance
+REIT annual report table definition, this is the REIT's annual performance
 
 | name | description |
 |---|---|
@@ -27,7 +27,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 | auditedNAVPerUnit | calculated NAV per unit basis |
 | declaredDPU | audited annual DPU |
 
-* REIT Share Price, daily stock market price
+REIT Share Price, daily stock market price
 
 | name | description |
 |---|---|
@@ -39,7 +39,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 | open | opening share price of the day |
 | close | closing share price of the day |
 
-* REIT Share Price NAV, used to determine if share price valuation is good/bad to buy based on NAV
+REIT Share Price NAV, used to determine if share price valuation is good/bad to buy based on NAV
 
 | name | description |
 |---|---|
@@ -47,7 +47,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 | date | share price date |
 | pricePerNAVPerUnit | share price NAV |
 
-* REIT Share Price Yield, used to determine if share price valuation is good/bad to buy based on DPU
+REIT Share Price Yield, used to determine if share price valuation is good/bad to buy based on DPU
 
 | name | description |
 |---|---|
@@ -60,7 +60,7 @@ This activity outlines a couple of key points that you need to get yourself fami
 ### Share Price NAV
 
 Calculation is done per share price date using `calculateSharePriceNAV` function.
-Pick the `auditedNAVPerUnit` value that has an announcement date that is less than or equal to the share price's date.
+Pick the latest `auditedNAVPerUnit` value that has an announcement date that is less than or equal to the share price's date, do the calculation, and insert it into the `SharePriceNAV` table;
 
 * `pricePerNAVPerUnit = closing share price / audited NAV Per Unit`
 
@@ -69,13 +69,13 @@ Pick the `auditedNAVPerUnit` value that has an announcement date that is less th
 * `yield = declared dpu / closing share price`
 
 Calculation is done per share price date using `calculateSharePriceYield` function.
-Pick the `declaredDPU` value that has an announcement date that is less than or equal to the share price's date.
+Pick the latest `declaredDPU` value that has an announcement date that is less than or equal to the share price's date, do the calculation, and insert it into the `SharePriceYield` table;
 
 ## Triggers
 
-Design the triggers that it automatically inserts the calculated `pricePerNAVPerUnit` and `yield` values on respective tables.
+Design the triggers that it automatically calls the share price functions when a share price is added or updated.
 
 There will be two triggers in place
 
-* `calculateSharePriceNAVTrigger`, inserts to share price nav table when a new share price is added
-* `calculateSharePriceYieldTrigger`, inserts to share price yield table when a new share price is added
+* `calculateSharePriceNAVTrigger`, performs `calculateSharePriceNAV` when a new share price is added
+* `calculateSharePriceYieldTrigger`, performs `calculateSharePriceYield` when a new share price is added
