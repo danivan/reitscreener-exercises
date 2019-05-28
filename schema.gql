@@ -13,7 +13,8 @@ enum REITSector {
 }
 
 enum ReportFrequency {
-  QUARTERLY
+  SEMESTER
+  QUARTER
   ANNUAL
 }
 
@@ -28,8 +29,8 @@ type Reit {
 }
 
 type FinancialReport {
-  type: String!
-  announcementDate: DateTime
+  frequency: ReportFrequency!
+  announcementDate: DateTime!
   year: String!
   link: String
 }
