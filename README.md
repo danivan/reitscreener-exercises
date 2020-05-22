@@ -35,9 +35,9 @@ This activity is an auxiliary activity, there are existing scheduled scrapers th
 * setup scraper definitions
 * setup scheduler, cronjobs if necessary
 
-## Docker and Ansible
+## Docker Basics
 
-This activity will give you an idea how the automation works, both development and production
+This activity enables you to get an overview on REITScreener's infrastructure setup
 
 * setup databases using docker
 * setup scripts calls using ansible
