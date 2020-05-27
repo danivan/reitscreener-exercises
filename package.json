@@ -1,0 +1,24 @@
+{
+  "name": "reitscreener-exercises",
+  "version": "1.0.0",
+  "description": "The onboarding exercises is a set of activities that reflects the internal project codebase, i.e. REITScreener.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danivan/reitscreener-exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danivan/reitscreener-exercises/issues"
+  },
+  "homepage": "https://github.com/danivan/reitscreener-exercises#readme",
+  "dependencies": {
+    "pg": "^8.2.1",
+    "pgtools": "^0.3.0"
+  }
+}
