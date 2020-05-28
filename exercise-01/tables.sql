@@ -1,0 +1,48 @@
+CREATE TABLE IF NOT EXISTS "REIT" (
+	"reitId" serial PRIMARY KEY,
+	"name" VARCHAR (50) UNIQUE NOT NULL,
+	"stockCode" VARCHAR (50) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "annualReport" (
+	"reitId" INT UNIQUE NOT NULL,
+	"annualReportId" VARCHAR (50) PRIMARY KEY,
+	"year" VARCHAR (50) NOT NULL,
+	"announcementDate" DATE NOT NULL,
+	"auditedNAVPerUnit" FLOAT NOT NULL,
+	"declaredDPU" FLOAT NOT NULL,
+	CONSTRAINT "annualReport_reitId_fkey" FOREIGN KEY ("reitId")
+      REFERENCES "REIT" ("reitId") MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS "sharePrice" (
+	"reitId" INT PRIMARY KEY,
+	"date" DATE NOT NULL,
+	"volume" FLOAT NOT NULL,
+	"high" FLOAT NOT NULL,
+	"low" FLOAT NOT NULL,
+	"open" FLOAT NOT NULL,
+	"close" FLOAT NOT NULL,
+	CONSTRAINT "sharePrice_reitId_fkey" FOREIGN KEY ("reitId")
+      REFERENCES "REIT" ("reitId") MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS "sharePriceNAV" (
+	"reitId" INT PRIMARY KEY,
+	"date" DATE NOT NULL,
+	"pricePerNAVPerUnit" FLOAT NOT NULL,
+	CONSTRAINT "sharePriceNAV_reitId_fkey" FOREIGN KEY ("reitId")
+      REFERENCES "REIT" ("reitId") MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS "sharePriceYield" (
+	"reitId" INT PRIMARY KEY,
+	"date" DATE NOT NULL,
+	"yield" FLOAT NOT NULL,
+	CONSTRAINT "sharePriceYield_reitId_fkey" FOREIGN KEY ("reitId")
+      REFERENCES "REIT" ("reitId") MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
