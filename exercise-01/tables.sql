@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS "REIT" (
-	"reitId" serial PRIMARY KEY,
+	"reitId" SERIAL PRIMARY KEY,
 	"name" VARCHAR (50) UNIQUE NOT NULL,
 	"stockCode" VARCHAR (50) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "AnnualReport" (
 	"reitId" INT UNIQUE NOT NULL,
-	"annualReportId" VARCHAR (50) PRIMARY KEY,
+	"annualReportId" SERIAL PRIMARY KEY,
 	"year" VARCHAR (50) NOT NULL,
 	"announcementDate" DATE NOT NULL,
 	"auditedNAVPerUnit" FLOAT NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "AnnualReport" (
 );
 
 CREATE TABLE IF NOT EXISTS "SharePrice" (
-	"reitId" INT PRIMARY KEY,
+	"reitId" INT NOT NULL,
 	"date" DATE NOT NULL,
 	"volume" FLOAT NOT NULL,
 	"high" FLOAT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "SharePrice" (
 );
 
 CREATE TABLE IF NOT EXISTS "SharePriceNAV" (
-	"reitId" INT PRIMARY KEY,
+	"reitId" INT NOT NULL,
 	"date" DATE NOT NULL,
 	"pricePerNAVPerUnit" FLOAT NOT NULL,
 	CONSTRAINT "sharePriceNAV_reitId_fkey" FOREIGN KEY ("reitId")
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS "SharePriceNAV" (
 );
 
 CREATE TABLE IF NOT EXISTS "SharePriceYield" (
-	"reitId" INT PRIMARY KEY,
+	"reitId" INT NOT NULL,
 	"date" DATE NOT NULL,
 	"yield" FLOAT NOT NULL,
 	CONSTRAINT "sharePriceYield_reitId_fkey" FOREIGN KEY ("reitId")
