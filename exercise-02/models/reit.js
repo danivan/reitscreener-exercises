@@ -1,15 +1,14 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const REIT = sequelize.define('REIT', {
-    name: DataTypes.STRING,
-    stockCode: DataTypes.STRING
-  }, {});
-  REIT.associate = function(models) {
-    REIT.hasMany(models.AnnualReport);
-    REIT.hasMany(models.QuarterReport);
-    REIT.hasMany(models.SharePrice);
-    REIT.hasMany(models.SharePriceNAV);
-    REIT.hasMany(models.SharePriceYield);
-  };
-  return REIT;
-};
+import sequelize from '../../node_modules/sequelize';
+
+const REIT = sequelize.define('REIT', {
+  name: DataTypes.STRING,
+  stockCode: DataTypes.STRING,
+  exchange: DataTypes.STRING,
+  sector: DataTypes.STRING,
+  priceCurrency: DataTypes.STRING,
+  financialCurrency: DataTypes.STRING
+}, {tableName: 'REIT', timestamps: false});
+
+REIT.removeAttirbute('id');
+
+export default REIT;
