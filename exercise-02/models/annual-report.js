@@ -1,6 +1,6 @@
-import sequelize from '../../node_modules/sequelize';
+import sequelize from 'sequelize';
 
-const AnnualReport = sequelize.define('AnnualReport', {
+const AnnualReportModel = sequelize.define('AnnualReport', {
   reitId: DataTypes.INTEGER,
   year: DataTypes.INTEGER,
   announcementDate: DataTypes.DATE,
@@ -8,6 +8,6 @@ const AnnualReport = sequelize.define('AnnualReport', {
   declaredDPU: DataTypes.FLOAT
 }, {tableName: 'AnnualReport', timestamps: false});
 
-AnnualReport.removeAttribute('id');
+AnnualReportModel.removeAttribute('id');
 
-export default AnnualReport;
+export default AnnualReportModel;

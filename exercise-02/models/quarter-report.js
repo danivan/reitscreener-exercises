@@ -1,6 +1,6 @@
-import sequelize from '../../node_modules/sequelize';
+import sequelize from 'sequelize';
 
-const QuarterReport = sequelize.define('QuarterReport', {
+const QuarterReportModel = sequelize.define('QuarterReport', {
   reitId: DataTypes.INTEGER,
   period: DataTypes.STRING,
   year: DataTypes.INTEGER,
@@ -10,6 +10,6 @@ const QuarterReport = sequelize.define('QuarterReport', {
   link: DataTypes.STRING
 }, {tableName: 'QuarterReport', timestamps: false});
 
-QuarterReport.removeAttribute('id');
+QuarterReportModel.removeAttribute('id');
 
-export default QuarterReport;
+export default QuarterReportModel;

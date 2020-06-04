@@ -1,6 +1,6 @@
-import sequelize from '../../node_modules/sequelize';
+import sequelize from 'sequelize';
 
-const SharePrice = sequelize.define('SharePrice', {
+const SharePriceModel = sequelize.define('SharePrice', {
   reitId: DataTypes.INTEGER,
   date: DataTypes.DATE,
   volume: DataTypes.FLOAT,
@@ -10,6 +10,6 @@ const SharePrice = sequelize.define('SharePrice', {
   close: DataTypes.FLOAT
 }, {tableName: 'SharePrice', timestamps: false});
 
-SharePrice.removeAttribute('id');
+SharePriceModel.removeAttribute('id');
 
-export default SharePrice;
+export default SharePriceModel;

@@ -1,14 +1,14 @@
-import sequelize from '../../node_modules/sequelize';
+import sequelize from 'sequelize';
 
-const REIT = sequelize.define('REIT', {
+const ReitModel = sequelize.define('Reit', {
   name: DataTypes.STRING,
   stockCode: DataTypes.STRING,
   exchange: DataTypes.STRING,
   sector: DataTypes.STRING,
   priceCurrency: DataTypes.STRING,
   financialCurrency: DataTypes.STRING
-}, {tableName: 'REIT', timestamps: false});
+}, {tableName: 'Reit', timestamps: false});
 
-REIT.removeAttirbute('id');
+ReitModel.removeAttirbute('id');
 
-export default REIT;
+export default ReitModel;
