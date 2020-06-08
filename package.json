@@ -4,6 +4,7 @@
   "description": "The onboarding exercises is a set of activities that reflects the internal project codebase, i.e. REITScreener.",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,14 +25,19 @@
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-flow-strip-types": "^7.6.3",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/register": "^7.6.2"
+    "@babel/register": "^7.6.2",
+    "babel": "^6.23.0",
+    "csvtojson": "^2.0.10",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.21.1",
+    "flowjs": "^1.0.0"
   },
   "config": {}
 }
