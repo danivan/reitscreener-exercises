@@ -6,9 +6,12 @@ export async function up (queryInterface, Sequelize) {
   const pathDir = path.join(__dirname, '../../seed-02/annual-reports');
   
   fs.readdir(pathDir, async (err, fileArray) => {
-    const finalArray = fileArray.reduce( (finalArray, file2) => {
+    if (err) {
+      console.log(err);
+    }
+    const finalArray = await fileArray.reduce( async (finalArray, file2) => {
       const pathToFile = path.join(__dirname, file2);
-      let jsonArray = csvtojson()
+      let jsonArray = await csvtojson()
       .fromFile(pathToFile)
       .then( jsonArray => {
         jsonArray.map(
@@ -24,6 +27,7 @@ export async function up (queryInterface, Sequelize) {
       return finalArray.concat(jsonArray);
     }, []);
     console.log(finalArray);
+    await queryInterface.bulkInsert('AnnualReport', finalArray, {});
   });
 }
 
