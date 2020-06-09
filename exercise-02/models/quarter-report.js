@@ -2,6 +2,7 @@ import sequelize from 'sequelize';
 
 const QuarterReportModel = sequelize.define('QuarterReport', {
   reitId: DataTypes.INTEGER,
+  frequency: DataTypes.STRING,
   period: DataTypes.STRING,
   year: DataTypes.INTEGER,
   announcementDate: DataTypes.DATE,

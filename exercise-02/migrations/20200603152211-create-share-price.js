@@ -31,6 +31,18 @@ export async function up (queryInterface, Sequelize) {
     close: {
       allowNull: false,
       type: Sequelize.FLOAT
+    },
+    adjClose: {
+      allowNull: false,
+      type: Sequelize.FLOAT
+    },
+    dividendAmount: {
+      allowNull: false,
+      type: Sequelize.FLOAT
+    },
+    splitCoefficient: {
+      allowNull: false,
+      type: Sequelize.FLOAT
     }
   });
 }

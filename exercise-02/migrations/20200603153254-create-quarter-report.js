@@ -14,6 +14,10 @@ export async function up (queryInterface, Sequelize) {
         key: 'reitId'
       }
     },
+    frequency: {
+      allowNull: false,
+      type: Sequelize.STRING
+    },
     period: {
       allowNull: false,
       type: Sequelize.STRING

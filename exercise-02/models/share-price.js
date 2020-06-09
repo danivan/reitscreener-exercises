@@ -7,7 +7,10 @@ const SharePriceModel = sequelize.define('SharePrice', {
   high: DataTypes.FLOAT,
   low: DataTypes.FLOAT,
   open: DataTypes.FLOAT,
-  close: DataTypes.FLOAT
+  close: DataTypes.FLOAT,
+  adjClose: DataTypes.FLOAT,
+  dividendAmount: DataTypes.FLOAT,
+  splitCoefficient: DataTypes.FLOAT
 }, {tableName: 'SharePrice', timestamps: false});
 
 SharePriceModel.removeAttribute('id');
