@@ -3,7 +3,7 @@ import csvtojson from 'csvtojson';
 import path from 'path';
 
 export async function up (queryInterface, Sequelize) {
-  const pathDir = path.join(__dirname, '../../seed-02/annual-reports');
+  const pathDir = path.join(__dirname, '../../seed-02/quarter-reports');
   
   const fileArray = fs.readdirSync(pathDir);
   await fileArray.reduce( async (finalArray, file2) => {
@@ -18,10 +18,11 @@ export async function up (queryInterface, Sequelize) {
         ...json
       }));
       
-    await queryInterface.bulkInsert('AnnualReport', jsonArray, {});
+    await queryInterface.bulkInsert('QuarterReport', jsonArray, {});
   }, []);
 }
 
 export async function down (queryInterface, Sequelize) {
-  await queryInterface.bulkDelete('AnnualReport', null, {});
+  await queryInterface.bulkDelete('QuarterReport', null, {});
 }
+
