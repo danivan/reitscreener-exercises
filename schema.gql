@@ -21,7 +21,7 @@ enum ReportFrequency {
 type Reit {
   reitId: ID!
   name: String!
-  sector: ReitSector!
+  sector: REITSector!
   stockCode: String!
   exchange: REITExchange!
   priceCurrency: String!
