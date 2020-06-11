@@ -4,7 +4,7 @@ import { importSchema } from 'graphql-import';
 import { fileLoader, mergeResolvers } from 'merge-graphql-schemas';
 import path from 'path';
 
-const typeDefs = importSchema('schema.gql');
+const typeDefs = importSchema(path.join(__dirname, '../../../../schema.gql'));
 const resolvers = mergeResolvers(fileLoader(path.join(__dirname, '/resolvers'), { recursive: true }));
 const server = new ApolloServer({ typeDefs, resolvers });
  
