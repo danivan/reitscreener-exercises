@@ -1,4 +1,7 @@
 {
-    "plugins": ["@babel/plugin-transform-modules-commonjs"],
-    "retainLines": true
+    "plugins": [
+        "@babel/plugin-transform-modules-commonjs"
+    ],
+    "retainLines": true,
+    "presets": ["@babel/preset-env"]
 }
