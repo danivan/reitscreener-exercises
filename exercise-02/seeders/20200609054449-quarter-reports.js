@@ -2,7 +2,7 @@ import fs from 'fs';
 import csvtojson from 'csvtojson';
 import path from 'path';
 
-export async function up(queryInterface, Sequelize) {
+export async function up(queryInterface) {
   const pathDir = path.join(__dirname, '../../seed-02/quarter-reports');
 
   const fileArray = fs.readdirSync(pathDir);
@@ -22,6 +22,6 @@ export async function up(queryInterface, Sequelize) {
   }, []);
 }
 
-export async function down(queryInterface, Sequelize) {
+export async function down(queryInterface) {
   await queryInterface.bulkDelete('QuarterReport', null, {});
 }

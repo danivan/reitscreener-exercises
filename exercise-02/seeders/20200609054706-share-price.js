@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export async function up(queryInterface, Sequelize) {
+export async function up(queryInterface) {
   const pathDir = path.join(__dirname, '../../seed-02/share-price');
 
   const fileArray = fs.readdirSync(pathDir);
@@ -24,6 +24,6 @@ export async function up(queryInterface, Sequelize) {
   }, []);
 }
 
-export async function down(queryInterface, Sequelize) {
+export async function down(queryInterface) {
   await queryInterface.bulkDelete('SharePrice', null, {});
 }
