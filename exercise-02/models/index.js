@@ -1,37 +1,25 @@
-'use strict';
+import sequelize from '../lib/sequelize';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+import Reit from './reit';
+import AnnualReport from './annual-report';
+import QuarterReport from './quarter-report';
+import SharePrice from './share-price';
+import SharePriceNAV from './share-price-nav';
+import SharePriceYield from './share-price-yield';
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+Reit(sequelize);
+AnnualReport(sequelize);
+QuarterReport(sequelize);
+SharePrice(sequelize);
+SharePriceNAV(sequelize);
+SharePriceYield(sequelize);
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+// eslint-disable-next-line prefer-destructuring
+const models = sequelize.models;
+Object.keys(models).forEach((name) => {
+  if ('associate' in models[name]) {
+    models[name].associate(models);
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
+export default sequelize;

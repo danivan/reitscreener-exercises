@@ -1,4 +1,5 @@
-import sequelize from 'sequelize';
+import DataTypes from 'sequelize/lib/data-types';
+import sequelize from '../lib/sequelize';
 
 const ReitModel = sequelize.define('Reit', {
   name: DataTypes.STRING,
@@ -6,9 +7,9 @@ const ReitModel = sequelize.define('Reit', {
   exchange: DataTypes.STRING,
   sector: DataTypes.STRING,
   priceCurrency: DataTypes.STRING,
-  financialCurrency: DataTypes.STRING
-}, {tableName: 'Reit', timestamps: false});
+  financialCurrency: DataTypes.STRING,
+}, { tableName: 'Reit', timestamps: false });
 
-ReitModel.removeAttirbute('id');
+ReitModel.removeAttribute('id');
 
 export default ReitModel;

@@ -1,4 +1,5 @@
-import sequelize from 'sequelize';
+import DataTypes from 'sequelize/lib/data-types';
+import sequelize from '../lib/sequelize';
 
 const SharePriceModel = sequelize.define('SharePrice', {
   reitId: DataTypes.INTEGER,
@@ -10,8 +11,8 @@ const SharePriceModel = sequelize.define('SharePrice', {
   close: DataTypes.FLOAT,
   adjClose: DataTypes.FLOAT,
   dividendAmount: DataTypes.FLOAT,
-  splitCoefficient: DataTypes.FLOAT
-}, {tableName: 'SharePrice', timestamps: false});
+  splitCoefficient: DataTypes.FLOAT,
+}, { tableName: 'SharePrice', timestamps: false });
 
 SharePriceModel.removeAttribute('id');
 
