@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint",
-    "test": "ava"
+    "test": "ava --verbose",
+    "start": "node --require @babel/register exercise-02/src/api/graphql/server.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-flow-strip-types": "^7.6.3",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
     "@babel/preset-flow": "^7.0.0",
     "@babel/register": "^7.6.2",
     "ava": "^3.8.2",
@@ -59,7 +62,8 @@
       "exercise-02/test/*.test.js"
     ],
     "require": [
-      "@babel/register"
+      "@babel/register",
+      "@babel/polyfill"
     ],
     "inherit": true,
     "verbose": true
