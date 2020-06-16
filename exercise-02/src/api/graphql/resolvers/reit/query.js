@@ -1,10 +1,17 @@
-const resolvers = {
+export default {
   Query: {
-    async reit(root, { id, stockCode }, { db }) {
-      return db.ReitModel.findAll({
+    async reit(root, { reitId, stockCode }, { db }) {
+      return db.models.Reit.findOne({
         where: {
-          reitId: id,
+          reitId,
           stockCode,
+        },
+      });
+    },
+    async reits(root, { exchange }, { db }) {
+      return db.models.Reit.findAll({
+        where: {
+          exchange,
         },
       });
     },
