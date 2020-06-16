@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+import DataTypes from 'sequelize/lib/data-types';
 import sequelize from '../lib/sequelize';
 
 import Reit from './reit';
@@ -7,12 +9,28 @@ import SharePrice from './share-price';
 import SharePriceNAV from './share-price-nav';
 import SharePriceYield from './share-price-yield';
 
-Reit(sequelize);
-AnnualReport(sequelize);
-QuarterReport(sequelize);
-SharePrice(sequelize);
-SharePriceNAV(sequelize);
-SharePriceYield(sequelize);
+const Watchlist = sequelize.define('Watchlist', {
+  stockCode: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  exchange: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+}, { tableName: 'Watchlist', timestamps: false });
+
+Watchlist.removeAttribute('id');
+
+sequelize.sync();
+
+new Reit(sequelize);
+new AnnualReport(sequelize);
+new QuarterReport(sequelize);
+new SharePrice(sequelize);
+new SharePriceNAV(sequelize);
+new SharePriceYield(sequelize);
 
 // eslint-disable-next-line prefer-destructuring
 const models = sequelize.models;
