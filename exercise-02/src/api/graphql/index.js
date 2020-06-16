@@ -7,7 +7,6 @@ import db from '../../../models/index';
 
 export default {
   start: (port = 4000) => {
-
     const typeDefs = importSchema(path.join(__dirname, '../../../../schema.gql'));
     const resolvers = mergeResolvers(fileLoader(path.join(__dirname, '/resolvers'), { recursive: true }));
 
