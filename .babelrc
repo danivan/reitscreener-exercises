@@ -1,6 +1,9 @@
 {
     "plugins": [
-        "@babel/plugin-transform-modules-commonjs"
+        "@babel/plugin-transform-modules-commonjs",
+        ["@babel/plugin-transform-runtime", {
+            "regenerator": true
+          }]
     ],
     "retainLines": true,
     "presets": ["@babel/preset-env"]
