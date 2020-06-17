@@ -1,11 +1,18 @@
 export default {
   Query: {
     async reit(root, { reitId, stockCode }, { db }) {
-      return db.models.Reit.findOne({
-        where: {
+      let where = {
+        stockCode,
+      };
+
+      if (reitId) {
+        where = {
           reitId,
-          stockCode,
-        },
+        };
+      }
+
+      return db.models.Reit.findOne({
+        where,
       });
     },
     async reits(root, { exchange }, { db }) {
