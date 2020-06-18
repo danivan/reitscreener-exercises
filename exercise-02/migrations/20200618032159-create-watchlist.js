@@ -9,14 +9,6 @@ export async function up(queryInterface, Sequelize) {
         key: 'reitId',
       },
     },
-    stockCode: {
-      type: Sequelize.STRING,
-      unique: true,
-    },
-    exchange: {
-      type: Sequelize.ENUM,
-      values: ['SGX', 'HKEX'],
-    },
   });
 }
-export async function down(queryInterface, Sequelize) { await queryInterface.dropTable('Watchlists'); }
+export async function down(queryInterface) { await queryInterface.dropTable('Watchlists'); }
