@@ -2,17 +2,17 @@ import { Op } from 'sequelize';
 
 export default {
   Query: {
-    async sharePriceNAV(root, { stockCode, range }, { db }) {
+    async sharePriceYield(root, { stockCode, range }, { db }) {
       const { reitId } = await db.models.Reit.findOne({
         attributes: ['reitId'],
         where: {
           stockCode,
         },
       });
-      const pricePerNAVPerUnit = await db.models.SharePriceNAV.findOne({
+      const sharePriceYield = await db.models.SharePriceYield.findOne({
         attributes: [
-          [db.fn('stddev', db.col('pricePerNAVPerUnit')), 'stddev'],
-          [db.fn('avg', db.col('pricePerNAVPerUnit')), 'avg'],
+          [db.fn('stddev', db.col('yield')), 'stddev'],
+          [db.fn('avg', db.col('yield')), 'avg'],
         ],
         where: {
           reitId,
@@ -23,7 +23,7 @@ export default {
         raw: true,
       });
 
-      const { stddev, avg } = pricePerNAVPerUnit[0];
+      const { stddev, avg } = sharePriceYield[0];
 
       return {
         minusSTDDEV: avg - stddev,
@@ -33,7 +33,7 @@ export default {
         average: avg,
         chart: db.models.SharePriceNAV.findAll({
           attributes: [
-            ['pricePerNAVPerUnit', 'value'],
+            ['yield', 'value'],
             ['date', 'label'],
           ],
           where: {
