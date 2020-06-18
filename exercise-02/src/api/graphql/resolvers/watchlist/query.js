@@ -11,7 +11,7 @@ export default {
       return watchlist.map(async (item) => {
         const reit = await db.models.Reit.findAll({
           where: {
-            stockCode: item.stockCode,
+            reitId: item.reitId,
           },
           raw: true,
         });
@@ -19,7 +19,7 @@ export default {
         const { price } = await db.models.SharePrice.findOne({
           attributes: [['close', 'price']],
           where: {
-            reitId: reit[0].reitId,
+            reitId: item.reitId,
           },
           order: [['date', 'DESC']],
           raw: true,
