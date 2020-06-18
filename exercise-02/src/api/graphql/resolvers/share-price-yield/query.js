@@ -9,7 +9,7 @@ export default {
           stockCode,
         },
       });
-      const sharePriceYield = await db.models.SharePriceYield.findOne({
+      const { stddev, avg } = await db.models.SharePriceYield.findOne({
         attributes: [
           [db.fn('stddev', db.col('yield')), 'stddev'],
           [db.fn('avg', db.col('yield')), 'avg'],
@@ -23,15 +23,13 @@ export default {
         raw: true,
       });
 
-      const { stddev, avg } = sharePriceYield[0];
-
       return {
         minusSTDDEV: avg - stddev,
         minus2STDDEV: avg - (2 * stddev),
         plusSTDDEV: avg + stddev,
         plus2STDDEV: avg + (2 * stddev),
         average: avg,
-        chart: db.models.SharePriceNAV.findAll({
+        chart: db.models.SharePriceYield.findAll({
           attributes: [
             ['yield', 'value'],
             ['date', 'label'],

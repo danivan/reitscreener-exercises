@@ -9,7 +9,7 @@ export default {
           stockCode,
         },
       });
-      const pricePerNAVPerUnit = await db.models.SharePriceNAV.findOne({
+      const { stddev, avg } = await db.models.SharePriceNAV.findOne({
         attributes: [
           [db.fn('stddev', db.col('pricePerNAVPerUnit')), 'stddev'],
           [db.fn('avg', db.col('pricePerNAVPerUnit')), 'avg'],
@@ -22,8 +22,6 @@ export default {
         },
         raw: true,
       });
-
-      const { stddev, avg } = pricePerNAVPerUnit[0];
 
       return {
         minusSTDDEV: avg - stddev,
