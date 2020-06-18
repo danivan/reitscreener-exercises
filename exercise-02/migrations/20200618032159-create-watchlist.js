@@ -1,8 +1,9 @@
-export function up(queryInterface, Sequelize) {
-  return queryInterface.createTable('Watchlists', {
+export async function up(queryInterface, Sequelize) {
+  await queryInterface.createTable('Watchlist', {
     reitId: {
       allowNull: false,
       type: Sequelize.INTEGER,
+      unique: true,
       references: {
         model: 'Reit',
         key: 'reitId',
@@ -10,6 +11,7 @@ export function up(queryInterface, Sequelize) {
     },
     stockCode: {
       type: Sequelize.STRING,
+      unique: true,
     },
     exchange: {
       type: Sequelize.ENUM,
@@ -17,4 +19,4 @@ export function up(queryInterface, Sequelize) {
     },
   });
 }
-export function down(queryInterface, Sequelize) { return queryInterface.dropTable('Watchlists'); }
+export async function down(queryInterface, Sequelize) { await queryInterface.dropTable('Watchlists'); }
