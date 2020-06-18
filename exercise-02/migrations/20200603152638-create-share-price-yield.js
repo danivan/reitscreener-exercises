@@ -1,11 +1,5 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('SharePriceYield', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER,
-    },
     reitId: {
       allowNull: false,
       type: Sequelize.INTEGER,
