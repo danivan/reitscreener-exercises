@@ -1,21 +1,29 @@
 export default {
   Mutation: {
     async addToWatchlist(root, { stockCode }, { db }) {
-      const { reitId, exchange } = await db.models.Reit.findOne({
-        attributes: ['reitId', 'exchange'],
+      const { reitId } = await db.models.Reit.findOne({
+        attributes: ['reitId'],
         where: {
           stockCode,
         },
         raw: true,
       });
 
-      return db.models.Watchlist.create({ reitId, stockCode, exchange })
+      return db.models.Watchlist.create({ reitId })
         .then(() => true)
         .catch(() => false);
     },
     async removeFromWatchlist(root, { stockCode }, { db }) {
+      const { reitId } = await db.models.Reit.findOne({
+        attributes: ['reitId'],
+        where: {
+          stockCode,
+        },
+        raw: true,
+      });
+
       return db.models.Watchlist.destroy({
-        where: { stockCode },
+        where: { reitId },
       })
         .then(() => true)
         .catch(() => false);
