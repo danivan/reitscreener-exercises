@@ -1,5 +1,4 @@
 /* eslint-disable no-new */
-import DataTypes from 'sequelize/lib/data-types';
 import sequelize from '../lib/sequelize';
 
 import Reit from './reit';
