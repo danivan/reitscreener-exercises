@@ -18,12 +18,13 @@ exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield scraper_1.default();
     const notNull = (f) => f.internal.content !== null;
     const filtered = ramda_1.default.filter(notNull, data);
+    console.log(filtered);
     return filtered.reduce((articles, article) => {
-        if (article.author.substring(0, 3) !== 'by:') {
+        if (article.author && article.author.substring(0, 3) !== 'by:') {
             return articles;
         }
         article.type = 'blog';
-        article.author = article.author.substring(4);
+        article.author = article.author && article.author.replace('by: ', '');
         article.image = article.internal.image;
         article.content = article.internal.content;
         delete article.internal;

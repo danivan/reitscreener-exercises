@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",                          
+    "module": "commonjs",                       
+    "rootDir": "exercise-04",
+    "outDir": "exercise-04/build",
+    "strict": true,         
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

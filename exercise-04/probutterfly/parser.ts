@@ -22,12 +22,14 @@ export default async () => {
 
   const filtered = R.filter(notNull, data);
 
+  console.log(filtered);
+
   return filtered.reduce((articles: Array<Article>, article) => {
-    if (article.author.substring(0, 3) !== 'by:') {
+    if (article.author && article.author.substring(0, 3) !== 'by:') {
       return articles;
     }
     article.type = 'blog';
-    article.author = article.author.substring(4);
+    article.author = article.author && article.author.replace('by: ', '');
     article.image = article.internal.image;
     article.content = article.internal.content;
     delete article.internal;
