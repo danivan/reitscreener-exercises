@@ -4,6 +4,8 @@ import Reit from './reit';
 import Insight from './insight';
 
 sequelize.addModels([Reit, Insight]);
+Reit.removeAttribute('id');
+Insight.removeAttribute('id');
 
 // eslint-disable-next-line prefer-destructuring
 const models = sequelize.models;

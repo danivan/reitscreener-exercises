@@ -12,7 +12,10 @@ interface Insight {
   type: String,
 }
  
-@Table
+@Table({
+  freezeTableName: true,
+  timestamps: false
+})
 class Insight extends Model<Insight> {
 
   @Column(DataType.INTEGER)

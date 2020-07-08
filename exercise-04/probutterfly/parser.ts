@@ -17,12 +17,9 @@ interface Article {
 
 export default async () => {
   const data: Array<Article> = await scrapeProbutterfly();
-
   const notNull = (f: Article) => f.internal.content !== null;
 
   const filtered = R.filter(notNull, data);
-
-  console.log(filtered);
 
   return filtered.reduce((articles: Array<Article>, article) => {
     if (article.author && article.author.substring(0, 3) !== 'by:') {

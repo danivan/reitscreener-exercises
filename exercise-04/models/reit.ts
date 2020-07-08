@@ -11,7 +11,8 @@ interface Reit {
 }
 
 @Table({
-  freezeTableName: true
+  freezeTableName: true,
+  timestamps: false
 })
 class Reit extends Model<Reit> {
 
